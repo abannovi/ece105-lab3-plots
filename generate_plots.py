@@ -140,12 +140,13 @@ def main():
     """
     sensor_a, sensor_b, timestamps = generate_data(seed=1910)
 
-    fig, axes = plt.subplots(1, 3, figsize=(18, 5))
+    fig, axes = plt.subplots(2, 2, figsize=(12, 10))
+    axes[1, 1].axis('off')  # leave the 4th cell empty
 
-    plot_scatter(sensor_a, sensor_b, timestamps, axes[0])
-    plot_histogram(sensor_a, sensor_b, axes[1])
-    plot_boxplot(sensor_a, sensor_b, axes[2])
-
+    plot_scatter(sensor_a, sensor_b, timestamps, axes[0, 0])
+    plot_histogram(sensor_a, sensor_b, axes[0, 1])
+    plot_boxplot(sensor_a, sensor_b, axes[1, 0])
+    
     plt.tight_layout()
     plt.savefig('sensor_analysis.png', dpi=150, bbox_inches='tight')
     print("Saved sensor_analysis.png")
